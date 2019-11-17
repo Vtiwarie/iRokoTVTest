@@ -26,6 +26,26 @@ abstract class BasePresenter<T : BaseView> : ViewModel(), LifecycleObserver {
         lifecycle.addObserver(this)
     }
 
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    open fun start() {
+
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    open fun resume() {
+
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
+    open fun pause() {
+
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    open fun stop() {
+
+    }
+
     /**
      * Destroy the view when we are finished with it, as well
      * as Rx Disposables, both to prevent memory leaks.

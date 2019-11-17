@@ -3,7 +3,6 @@ package com.example.irokutest.inject
 import android.content.Context
 import com.example.irokutest.R
 import com.example.irokutest.api.NetworkApi
-import com.example.irokutest.api.NetworkInterceptor
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -25,12 +24,10 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideHttpClient(
-        httpLoggingInterceptor: HttpLoggingInterceptor,
-        stashImageInterceptor: NetworkInterceptor
+        httpLoggingInterceptor: HttpLoggingInterceptor
     ): OkHttpClient {
         val builder = OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
-            .addInterceptor(stashImageInterceptor)
             .connectTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.SECONDS)
@@ -40,12 +37,15 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideGsonConverterFactory(): GsonConverterFactory {
-        return GsonConverterFactory.create(GsonBuilder().create())
+        return GsonConverterFactory.create(
+            GsonBuilder()
+                .create()
+        )
     }
 
     @Provides
     @Singleton
-    fun provideImagesApi(
+    fun provideApi(
         @ForApplication context: Context,
         httpClient: OkHttpClient,
         gsonConverterFactory: GsonConverterFactory

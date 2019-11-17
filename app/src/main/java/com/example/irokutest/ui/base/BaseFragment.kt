@@ -25,6 +25,10 @@ abstract class BaseFragment<P : BasePresenter<V>, V : BaseView> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.attachView(this as V, lifecycle)
+
+        initializeViews()
     }
+
+    protected abstract fun initializeViews()
 }
 

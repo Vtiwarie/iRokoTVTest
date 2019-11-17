@@ -3,6 +3,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="base_url"></string>
-    <string name="api_key"></string>
+    <string name="base_url">https://api.themoviedb.org/3/</string>
+    <string name="api_key">d682ece0680e8042735580655b61ab45</string>
 </resources>

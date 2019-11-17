@@ -1,14 +1,12 @@
 package com.example.irokutest.api
 
+import com.example.irokutest.Constants
+import com.example.irokutest.model.MovieResults
+import io.reactivex.Flowable
+import retrofit2.http.GET
+import retrofit2.http.Query
+
 interface NetworkApi {
-//    @GET("search/images")
-//    fun searchImages(@Query("phrase") phrase: String,
-//                     @Query("fields") fields: String,
-//                     @Query("sort_order") sortOrder: String): Single<ImageResponse>
-//
-//    @GET("images/{id}")
-//    fun getImageMetadata(@Path("id") id: String): Flowable<MetadataResponse>
-//
-//    @GET("images/{id}/similar")
-//    fun getSimilarImages(@Path("id") id: String): Flowable<ImageResponse>
+    @GET("movie/popular")
+    fun getMovies(@Query(Constants.Api.apiKey) apiKey: String): Flowable<MovieResults>
 }

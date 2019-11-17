@@ -15,6 +15,9 @@ class MainFragment : BaseFragment<MainPresenter, MainView>(), MainView {
         App.instance.appComponent.inject(this)
     }
 
+    override fun initializeViews() {
+    }
+
     override fun showError(t: Throwable) {
     }
 
