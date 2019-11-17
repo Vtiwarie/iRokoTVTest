@@ -3,7 +3,7 @@ package com.example.irokutest
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.irokutest.ui.base.BaseFragment
-import com.example.irokutest.ui.main.MainFragment
+import com.example.irokutest.ui.list.ListFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //starting fragment
-        navigateToFragment(MainFragment.newInstance())
+        navigateToFragment(ListFragment.newInstance())
     }
 
     fun navigateToFragment(fragment: BaseFragment<*, *>) {

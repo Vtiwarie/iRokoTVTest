@@ -1,3 +1,7 @@
 package com.example.irokutest.repository
 
-abstract class BaseRepository
+import io.realm.Realm
+
+abstract class BaseRepository {
+    protected fun getRealm() = Realm.getDefaultInstance()
+}

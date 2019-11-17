@@ -1,15 +1,19 @@
 package com.example.irokutest.model
 
-class Movie(
-    val id: Int = -1,
+import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
 
-    val title: String = "",
+open class Movie(
+    @PrimaryKey
+    var id: Int = -1,
 
-    val overview: String = "",
+    var title: String = "",
 
-    val poster_path: String = "",
+    var overview: String = "",
 
-    val vote_average: Double = 0.0,
+    var poster_path: String = "",
 
-    val release_date: String = ""
-)
+    var vote_average: Double = 0.0,
+
+    var release_date: String = ""
+) : RealmObject()

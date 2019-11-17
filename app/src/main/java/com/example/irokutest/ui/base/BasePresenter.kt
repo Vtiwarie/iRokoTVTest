@@ -58,6 +58,7 @@ abstract class BasePresenter<T : BaseView> : ViewModel(), LifecycleObserver {
                 it.dispose()
             }
         }
+
         this.view = null
     }
 }
