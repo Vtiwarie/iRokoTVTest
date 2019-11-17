@@ -1,20 +1,25 @@
 package com.example.irokutest.repository
 
-import com.example.irokutest.api.NetworkService
+import com.example.irokutest.App
+import com.example.irokutest.R
+import com.example.irokutest.api.NetworkApi
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 
-class MovieRepository @Inject constructor(private val networkService: NetworkService) :
+class MovieRepository @Inject constructor(
+    var api: NetworkApi
+) :
     BaseRepository() {
 
-    /**
-     * The the network service to fetch popular movies from the API
-     */
-    fun fetchPopularMovies() = networkService.fetchPopularMovies()
+    private val apiKey = App.instance.resources.getString(R.string.api_key)
 
-    /**
-     * The the network service to fetch top rated movies from the API
-     */
-    fun fetchTopMovies() = networkService.fetchTopMovies()
+    fun fetchPopularMovies() = api.fetchPopularMovies(apiKey)
+        .subscribeOn(Schedulers.newThread())
+        .observeOn(Schedulers.io())
 
+
+    fun fetchTopMovies() = api.fetchTopMovies(apiKey)
+        .subscribeOn(Schedulers.newThread())
+        .observeOn(Schedulers.io())
 }
