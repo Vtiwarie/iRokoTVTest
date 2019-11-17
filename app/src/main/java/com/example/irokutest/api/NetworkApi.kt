@@ -8,5 +8,8 @@ import retrofit2.http.Query
 
 interface NetworkApi {
     @GET("movie/popular")
-    fun getMovies(@Query(Constants.Api.apiKey) apiKey: String): Flowable<MovieResults>
+    fun fetchPopularMovies(@Query(Constants.Api.apiKey) apiKey: String): Flowable<MovieResults>
+
+    @GET("movie/top_rated")
+    fun fetchTopMovies(@Query(Constants.Api.apiKey) apiKey: String): Flowable<MovieResults>
 }

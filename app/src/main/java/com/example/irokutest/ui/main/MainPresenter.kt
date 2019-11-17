@@ -15,6 +15,7 @@ class MainPresenter @Inject constructor(private val movieRepository: MovieReposi
      * Make network call to
      */
     override fun start() {
-        movieRepository.fetchMovies()
+        movieRepository.fetchPopularMovies()
+        movieRepository.fetchTopMovies()
     }
 }

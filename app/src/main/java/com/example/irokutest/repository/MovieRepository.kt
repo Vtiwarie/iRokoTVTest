@@ -8,8 +8,13 @@ class MovieRepository @Inject constructor(private val networkService: NetworkSer
     BaseRepository() {
 
     /**
-     * The the network service to fetch movies from the API
+     * The the network service to fetch popular movies from the API
      */
-    fun fetchMovies() = networkService.fetchMovies()
+    fun fetchPopularMovies() = networkService.fetchPopularMovies()
+
+    /**
+     * The the network service to fetch top rated movies from the API
+     */
+    fun fetchTopMovies() = networkService.fetchTopMovies()
 
 }

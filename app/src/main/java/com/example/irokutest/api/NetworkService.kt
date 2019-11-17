@@ -12,7 +12,18 @@ class NetworkService @Inject constructor(
 
     private val apiKey = App.instance.resources.getString(R.string.api_key)
 
-    fun fetchMovies() = api.getMovies(apiKey)
+    fun fetchPopularMovies() = api.fetchPopularMovies(apiKey)
+        .subscribeOn(Schedulers.newThread())
+        .observeOn(Schedulers.io())
+        .subscribe({
+            //save to database in IO thread
+            Log.d("", it.toString())
+        }, { error ->
+            Log.d("", error.message)
+        }
+        )
+
+    fun fetchTopMovies() = api.fetchTopMovies(apiKey)
         .subscribeOn(Schedulers.newThread())
         .observeOn(Schedulers.io())
         .subscribe({
