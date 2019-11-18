@@ -6,6 +6,8 @@ import com.example.irokutest.model.Movie
 import com.example.irokutest.ui.base.BaseAdapter
 
 class ListAdapter : BaseAdapter<Movie, ListViewHolder>() {
+    var clickListener: ((Movie) -> Unit)? = null
+
     override fun createDiffCallback(): DiffUtil.ItemCallback<Movie> =
         object : DiffUtil.ItemCallback<Movie>() {
             override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
@@ -22,6 +24,6 @@ class ListAdapter : BaseAdapter<Movie, ListViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), clickListener)
     }
 }

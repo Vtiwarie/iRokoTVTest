@@ -28,22 +28,18 @@ abstract class BasePresenter<T : BaseView> : ViewModel(), LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     open fun start() {
-
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     open fun resume() {
-
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     open fun pause() {
-
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     open fun stop() {
-
     }
 
     /**

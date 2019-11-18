@@ -12,7 +12,11 @@ import javax.inject.Inject
 class DetailPresenter @Inject constructor(private val movieRepository: MovieRepository) :
     BasePresenter<DetailView>() {
 
+    var movieId: Int = -1
+
     override fun start() {
+        val movie = movieRepository.getMovie(movieId) ?: return
+        view?.showMovieDetails(movie)
     }
 
     companion object {

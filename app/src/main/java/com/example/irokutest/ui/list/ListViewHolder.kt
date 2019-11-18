@@ -11,15 +11,19 @@ import kotlinx.android.synthetic.main.item_movie_list.*
 class ListViewHolder(parent: ViewGroup) :
     BaseViewHolder(inflateView(R.layout.item_movie_list, parent, false)) {
 
-    fun bind(movie: Movie) {
+    fun bind(movie: Movie, listener: ((movie: Movie) -> Unit)? = null) {
 
-        val baseUrl = itemView.context.getString(R.string.image_base_url)
+        val baseImageUrl = itemView.context.getString(R.string.image_base_url)
 
         Glide.with(itemView)
-            .load("${baseUrl}${movie.poster_path}")
+            .load("${baseImageUrl}${movie.poster_path}")
             .into(image)
 
         title.text = movie.title
+
+        itemView.setOnClickListener {
+            listener?.invoke(movie)
+        }
     }
 
 }

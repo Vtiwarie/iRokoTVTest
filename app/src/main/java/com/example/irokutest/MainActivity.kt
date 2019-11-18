@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     fun navigateToFragment(fragment: BaseFragment<*, *>) {
         supportFragmentManager.beginTransaction()
             .replace(CONTAINER, fragment)
+            .addToBackStack(null)
             .commit()
     }
 

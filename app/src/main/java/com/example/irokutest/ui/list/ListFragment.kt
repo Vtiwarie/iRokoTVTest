@@ -2,9 +2,11 @@ package com.example.irokutest.ui.list
 
 import android.os.Bundle
 import com.example.irokutest.App
+import com.example.irokutest.MainActivity
 import com.example.irokutest.R
 import com.example.irokutest.model.Movie
 import com.example.irokutest.ui.base.BaseFragment
+import com.example.irokutest.ui.detail.DetailFragment
 import kotlinx.android.synthetic.main.fragment_list.*
 
 
@@ -19,6 +21,9 @@ class ListFragment : BaseFragment<ListPresenter, ListView>(), ListView {
     }
 
     override fun initializeViews() {
+        movieListAdapter.clickListener = {
+            (activity as? MainActivity)?.navigateToFragment(DetailFragment.newInstance(it.id))
+        }
         movie_recycler.adapter = movieListAdapter
     }
 

@@ -29,6 +29,6 @@ abstract class BaseFragment<P : BasePresenter<V>, V : BaseView> : Fragment() {
         initializeViews()
     }
 
-    protected abstract fun initializeViews()
+    protected open fun initializeViews() {}
 }
 

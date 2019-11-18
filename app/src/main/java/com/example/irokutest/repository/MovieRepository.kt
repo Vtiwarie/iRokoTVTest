@@ -1,6 +1,7 @@
 package com.example.irokutest.repository
 
 import com.example.irokutest.App
+import com.example.irokutest.Constants
 import com.example.irokutest.R
 import com.example.irokutest.api.NetworkApi
 import com.example.irokutest.model.Movie
@@ -46,5 +47,11 @@ class MovieRepository @Inject constructor(
             .asFlowable()
             .map { getRealm().copyFromRealm(it) }
             .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    fun getMovie(id: Int): Movie? {
+        return getRealm().where(Movie::class.java)
+            .equalTo(Constants.Parameter.id, id)
+            .findFirst()
     }
 }

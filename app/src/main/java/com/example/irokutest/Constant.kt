@@ -4,4 +4,8 @@ object Constants {
     object Api {
         const val apiKey = "api_key"
     }
+
+    object Parameter {
+        const val id = "id"
+    }
 }
