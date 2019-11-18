@@ -5,8 +5,8 @@ import com.example.irokutest.R
 import com.example.irokutest.api.NetworkApi
 import com.example.irokutest.model.Movie
 import io.reactivex.Flowable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import io.realm.RealmResults
 import javax.inject.Inject
 
 
@@ -27,20 +27,24 @@ class MovieRepository @Inject constructor(
         .observeOn(Schedulers.io())
 
     fun saveMovies(movies: List<Movie>) {
-        getRealm().executeTransactionAsync {
+        getRealm().executeTransaction {
             it.insertOrUpdate(movies)
         }
     }
 
-    fun getPopularMovies(): Flowable<RealmResults<Movie>> {
+    fun getPopularMovies(): Flowable<List<Movie>> {
         return getRealm().where(Movie::class.java)
             .findAllAsync()
             .asFlowable()
+            .map { getRealm().copyFromRealm(it) }
+            .observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun getTopMovies(): Flowable<RealmResults<Movie>> {
+    fun getTopMovies(): Flowable<List<Movie>> {
         return getRealm().where(Movie::class.java)
             .findAllAsync()
             .asFlowable()
+            .map { getRealm().copyFromRealm(it) }
+            .observeOn(AndroidSchedulers.mainThread())
     }
 }

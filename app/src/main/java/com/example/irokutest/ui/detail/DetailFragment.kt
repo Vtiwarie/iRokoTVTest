@@ -9,7 +9,7 @@ import com.example.irokutest.ui.base.BaseFragment
 
 class DetailFragment : BaseFragment<DetailPresenter, DetailView>(), DetailView {
 
-    override val layoutID = R.layout.fragment_main
+    override val layoutID = R.layout.fragment_list
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

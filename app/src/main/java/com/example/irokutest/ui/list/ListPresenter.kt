@@ -3,7 +3,6 @@ package com.example.irokutest.ui.list
 import android.util.Log
 import com.example.irokutest.repository.MovieRepository
 import com.example.irokutest.ui.base.BasePresenter
-import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
 /**
@@ -21,17 +20,15 @@ class ListPresenter @Inject constructor(private val movieRepository: MovieReposi
      */
     override fun start() {
         disposables += movieRepository.getPopularMovies()
-            .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                view?.showPopularMovies()
+                view?.showPopularMovies(it.toList())
             }, { error ->
                 Log.e(TAG, error.message)
             })
 
         disposables += movieRepository.getTopMovies()
-            .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                view?.showTopMovies()
+                view?.showTopMovies(it.toList())
             }, { error ->
                 Log.e(TAG, error.message)
             })
