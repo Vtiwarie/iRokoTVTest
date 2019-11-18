@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/padding_medium">
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="@dimen/movie_list_image_width"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/movie_list_image_height"
-        android:layout_margin="@dimen/padding_medium"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,11 +21,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_small"
+        android:gravity="center"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/image"
         app:layout_constraintStart_toStartOf="@+id/image"
         app:layout_constraintTop_toBottomOf="@+id/image"
-        tools:text="Joker" />
+        tools:text="Joker sdk sdkfs dkfjasd kfajsd fkasdj faksdjf aks;dj fa sdjkfa jsdkfjas dkfjas dkf" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
