@@ -26,9 +26,10 @@ abstract class BaseFragment<P : BasePresenter<V>, V : BaseView> : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         presenter.attachView(this as V, lifecycle)
 
-        initializeViews()
+        setUpViews()
     }
 
-    protected open fun initializeViews() {}
+    protected open fun setUpViews() {}
+    protected open fun setUpListeners() {}
 }
 

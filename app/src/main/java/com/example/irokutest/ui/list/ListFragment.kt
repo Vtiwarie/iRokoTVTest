@@ -20,7 +20,7 @@ class ListFragment : BaseFragment<ListPresenter, ListView>(), ListView {
         App.instance.appComponent.inject(this)
     }
 
-    override fun initializeViews() {
+    override fun setUpViews() {
         movieListAdapter.clickListener = {
             (activity as? MainActivity)?.navigateToFragment(DetailFragment.newInstance(it.id))
         }
@@ -33,9 +33,6 @@ class ListFragment : BaseFragment<ListPresenter, ListView>(), ListView {
 
     override fun showTopMovies(movies: List<Movie>) {
         movieListAdapter.submitList(movies)
-    }
-
-    override fun showError(t: Throwable) {
     }
 
     companion object {

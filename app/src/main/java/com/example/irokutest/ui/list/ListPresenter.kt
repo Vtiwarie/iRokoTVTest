@@ -53,6 +53,6 @@ class ListPresenter @Inject constructor(private val movieRepository: MovieReposi
     }
 
     companion object {
-        const val TAG = "DetailPresenter"
+        const val TAG = "PlayerPresenter"
     }
 }

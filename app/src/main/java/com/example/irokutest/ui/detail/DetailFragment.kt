@@ -20,6 +20,12 @@ class DetailFragment : BaseFragment<DetailPresenter, DetailView>(), DetailView {
         presenter.movieId = arguments?.getInt(ARG_MOVIE_ID) ?: return
     }
 
+    override fun setUpListeners() {
+        super.setUpListeners()
+
+        image.setOnClickListener {  }
+    }
+
     override fun showMovieDetails(movie: Movie) {
         val baseImageUrl = context?.getString(R.string.image_base_url)
 
@@ -30,9 +36,6 @@ class DetailFragment : BaseFragment<DetailPresenter, DetailView>(), DetailView {
         title.text = movie.title
         synopsis.text = movie.overview
         rating.text = movie.vote_average.toString()
-    }
-
-    override fun showError(t: Throwable) {
     }
 
     companion object {

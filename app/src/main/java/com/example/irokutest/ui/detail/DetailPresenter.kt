@@ -7,7 +7,7 @@ import javax.inject.Inject
 /**
  * @author Vishaan Tiwarie
  *
- * DetailFragment Presenter
+ * Movie Detail Presenter
  */
 class DetailPresenter @Inject constructor(private val movieRepository: MovieRepository) :
     BasePresenter<DetailView>() {

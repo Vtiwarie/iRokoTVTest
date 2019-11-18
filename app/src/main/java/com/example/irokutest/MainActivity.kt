@@ -13,13 +13,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //starting fragment
-        navigateToFragment(ListFragment.newInstance())
+        navigateToFragment(ListFragment.newInstance(), false)
     }
 
-    fun navigateToFragment(fragment: BaseFragment<*, *>) {
+    fun navigateToFragment(fragment: BaseFragment<*, *>, addToStack: Boolean = true) {
         supportFragmentManager.beginTransaction()
-            .replace(CONTAINER, fragment)
-            .addToBackStack(null)
+            .replace(CONTAINER, fragment).apply {
+                if (addToStack) {
+                    this.addToBackStack(null)
+                }
+            }
             .commit()
     }
 
