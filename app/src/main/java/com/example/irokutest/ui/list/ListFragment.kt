@@ -7,13 +7,14 @@ import com.example.irokutest.R
 import com.example.irokutest.model.Movie
 import com.example.irokutest.ui.base.BaseFragment
 import com.example.irokutest.ui.detail.DetailFragment
+import com.example.irokutest.ui.list.adapter.MovieListAdapter
 import kotlinx.android.synthetic.main.fragment_list.*
 
 
 class ListFragment : BaseFragment<ListPresenter, ListView>(), ListView {
 
     override val layoutID = R.layout.fragment_list
-    private val movieListAdapter: ListAdapter by lazy { ListAdapter() }
+    private val movieMovieListAdapter: MovieListAdapter by lazy { MovieListAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,18 +22,18 @@ class ListFragment : BaseFragment<ListPresenter, ListView>(), ListView {
     }
 
     override fun setUpViews() {
-        movieListAdapter.clickListener = {
+        movieMovieListAdapter.clickListener = {
             (activity as? MainActivity)?.navigateToFragment(DetailFragment.newInstance(it.id))
         }
-        movie_recycler.adapter = movieListAdapter
+        movie_recycler.adapter = movieMovieListAdapter
     }
 
     override fun showPopularMovies(movies: List<Movie>) {
-        movieListAdapter.submitList(movies)
+        movieMovieListAdapter.submitMovieList(movies)
     }
 
     override fun showTopMovies(movies: List<Movie>) {
-        movieListAdapter.submitList(movies)
+        movieMovieListAdapter.submitMovieList(movies)
     }
 
     companion object {

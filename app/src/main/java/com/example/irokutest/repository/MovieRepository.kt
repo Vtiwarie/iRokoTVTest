@@ -27,11 +27,6 @@ class MovieRepository @Inject constructor(
         .subscribeOn(Schedulers.newThread())
         .observeOn(Schedulers.io())
 
-    fun saveMovies(movies: List<Movie>) {
-        getRealm().executeTransaction {
-            it.insertOrUpdate(movies)
-        }
-    }
 
     fun getPopularMovies(): Flowable<List<Movie>> {
         return getRealm().where(Movie::class.java)

@@ -6,6 +6,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModel
 import io.reactivex.disposables.Disposable
+import io.realm.Realm
 
 /**
  * @author Vishaan Tiwarie
@@ -40,6 +41,7 @@ abstract class BasePresenter<T : BaseView> : ViewModel(), LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     open fun stop() {
+        Realm.getDefaultInstance().close()
     }
 
     /**

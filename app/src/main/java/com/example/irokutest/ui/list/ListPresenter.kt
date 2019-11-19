@@ -1,6 +1,8 @@
 package com.example.irokutest.ui.list
 
 import android.util.Log
+import com.example.irokutest.model.MovieListType
+import com.example.irokutest.model.MovieResults
 import com.example.irokutest.repository.MovieRepository
 import com.example.irokutest.ui.base.BasePresenter
 import javax.inject.Inject
@@ -33,23 +35,37 @@ class ListPresenter @Inject constructor(private val movieRepository: MovieReposi
                 Log.e(TAG, error.message)
             })
 
-
         disposables += movieRepository.fetchPopularMovies()
             .subscribe({
                 //save to database in IO thread
-                movieRepository.saveMovies(it.results)
+                saveToDatabase(it, MovieListType.POPULAR)
             }, { error ->
                 Log.e(TAG, error.message)
             }
             )
+
         disposables += movieRepository.fetchTopMovies()
             .subscribe({
                 //save to database in IO thread
-                movieRepository.saveMovies(it.results)
+                saveToDatabase(it, MovieListType.TOP_RATED)
             }, { error ->
                 Log.e(TAG, error.message)
             }
             )
+    }
+
+    private fun saveToDatabase(movieResults: MovieResults, movieListType: MovieListType) {
+        val movies = movieResults.results
+        movies.forEach {
+            movieRepository.insertOrUpdate {
+                val movie = movieRepository.getMovie(it.id) ?: it
+
+                movie.listTypes.takeIf { it.contains(movieListType.id).not() }
+                    ?.add(movieListType.id)
+
+                movie
+            }
+        }
     }
 
     companion object {

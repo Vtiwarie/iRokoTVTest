@@ -28,5 +28,4 @@
         app:layout_constraintTop_toBottomOf="@+id/image"
         tools:text="Joker sdk sdkfs dkfjasd kfajsd fkasdj faksdjf aks;dj fa sdjkfa jsdkfjas dkfjas dkf" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

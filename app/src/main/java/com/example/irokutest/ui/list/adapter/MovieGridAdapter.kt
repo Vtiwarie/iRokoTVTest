@@ -1,11 +1,11 @@
-package com.example.irokutest.ui.list
+package com.example.irokutest.ui.list.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import com.example.irokutest.model.Movie
 import com.example.irokutest.ui.base.BaseAdapter
 
-class ListAdapter : BaseAdapter<Movie, ListViewHolder>() {
+class MovieGridAdapter : BaseAdapter<Movie, ListItemViewHolder>() {
     var clickListener: ((Movie) -> Unit)? = null
 
     override fun createDiffCallback(): DiffUtil.ItemCallback<Movie> =
@@ -19,11 +19,13 @@ class ListAdapter : BaseAdapter<Movie, ListViewHolder>() {
             }
         }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        return ListViewHolder(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListItemViewHolder {
+        return ListItemViewHolder(parent)
     }
 
-    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.bind(getItem(position), clickListener)
+    override fun onBindViewHolder(holder: ListItemViewHolder, position: Int) {
+        val movie = getItem(position)
+        (holder as? ListItemViewHolder)?.bind(movie, clickListener)
     }
+
 }
