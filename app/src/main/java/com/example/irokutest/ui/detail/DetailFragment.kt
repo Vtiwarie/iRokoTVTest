@@ -40,6 +40,7 @@ class DetailFragment : BaseFragment<DetailPresenter, DetailView>(), DetailView {
         title.text = movie.title
         synopsis.text = movie.overview
         rating.text = movie.vote_average.toString()
+        release_date.text = movie.release_date
     }
 
     companion object {

@@ -2,7 +2,7 @@
     <string name="app_name">Vishaan Tiwarie (iRoku Test)</string>
 
     <string name="base_url">https://api.themoviedb.org/3/</string>
-    <string name="api_key">d682ece0680e8042735580655b61ab45</string>
+    <string name="api_key"></string>
     <string name="image_base_url">https://image.tmdb.org/t/p/w600_and_h900_bestv2</string>
 
     <string name="popular_movies">Popular Movies</string>
