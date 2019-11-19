@@ -27,6 +27,7 @@ abstract class BaseFragment<P : BasePresenter<V>, V : BaseView> : Fragment() {
         presenter.attachView(this as V, lifecycle)
 
         setUpViews()
+        setUpListeners()
     }
 
     protected open fun setUpViews() {}

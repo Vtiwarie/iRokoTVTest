@@ -14,17 +14,24 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.irokutest"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -71,6 +78,12 @@ dependencies {
 
     //realm
     implementation 'io.realm:android-adapters:3.0.0'
+
+    //exo player
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.10.7'
+    implementation 'com.google.android.exoplayer:exoplayer-dash:2.10.7'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.10.7'
+    implementation 'com.google.android.exoplayer:exoplayer-hls:2.10.7'
 }
 
 realm {

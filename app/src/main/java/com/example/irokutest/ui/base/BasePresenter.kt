@@ -27,6 +27,10 @@ abstract class BasePresenter<T : BaseView> : ViewModel(), LifecycleObserver {
         lifecycle.addObserver(this)
     }
 
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    open fun create() {
+    }
+
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     open fun start() {
     }

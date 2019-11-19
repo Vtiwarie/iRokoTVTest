@@ -3,9 +3,11 @@ package com.example.irokutest.ui.detail
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.example.irokutest.App
+import com.example.irokutest.MainActivity
 import com.example.irokutest.R
 import com.example.irokutest.model.Movie
 import com.example.irokutest.ui.base.BaseFragment
+import com.example.irokutest.ui.player.PlayerFragment
 import kotlinx.android.synthetic.main.fragment_detail.*
 
 
@@ -23,7 +25,9 @@ class DetailFragment : BaseFragment<DetailPresenter, DetailView>(), DetailView {
     override fun setUpListeners() {
         super.setUpListeners()
 
-        image.setOnClickListener {  }
+        image_container.setOnClickListener {
+            (activity as? MainActivity)?.navigateToFragment(PlayerFragment.newInstance())
+        }
     }
 
     override fun showMovieDetails(movie: Movie) {
